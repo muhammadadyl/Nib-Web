@@ -2,12 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { ApplicationState } from '../store';
-import * as VacanciesStore from '../store/Vacancies';
+import * as VacancyDetailsStore from '../store/VacanciesDetails';
 import { Container } from 'reactstrap';
 import Moment from 'react-moment';
 
-type Props = VacanciesStore.VacanciesState
-  & typeof VacanciesStore.actionCreators
+type Props = VacancyDetailsStore.VacancyState
+  & typeof VacancyDetailsStore.actionCreators
   & RouteComponentProps<{ id: string }>;
 
 class VacanciesDetails extends React.PureComponent<Props> {
@@ -23,7 +23,7 @@ class VacanciesDetails extends React.PureComponent<Props> {
   public render() {
     return (
         <React.Fragment>
-          <div className={`outer-container vacancies-container ${ !this.props.isDetails? "hide-content" : "" }`}>
+          <div className={`outer-container vacancies-container overlay`}>
             <Container>
               <div className="vacancy-header">
                 <h1 id="listTable">Our Vacancies</h1>
@@ -77,6 +77,6 @@ class VacanciesDetails extends React.PureComponent<Props> {
 }
 
 export default connect(
-  (state: ApplicationState) => state.vacancies,
-  VacanciesStore.actionCreators
+  (state: ApplicationState) => state.vacancyDetails,
+  VacancyDetailsStore.actionCreators
 )(VacanciesDetails as any);

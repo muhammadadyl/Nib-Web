@@ -6,12 +6,15 @@ import { ApplicationState } from '../store';
 import * as VacanciesStore from '../store/Vacancies';
 import { Container } from 'reactstrap';
 import Moment from 'react-moment';
+import { Vacancy } from '../store/shared/model/Vacancy';
 
 type Props = VacanciesStore.VacanciesState
   & typeof VacanciesStore.actionCreators
   & RouteComponentProps<{ location: string, page: string }>;
 
 class VacanciesData extends React.PureComponent<Props> {
+
+  private pageSize = 20;
 
   /**
    * constructor to register variables to event
@@ -21,8 +24,6 @@ class VacanciesData extends React.PureComponent<Props> {
     
     this.handleChangeLocation = this.handleChangeLocation.bind(this);
   }
-
-  private pageSize = 20;
   
   public componentDidMount() {
     this.ensureDataFetched();
@@ -33,13 +34,13 @@ class VacanciesData extends React.PureComponent<Props> {
   }
 
   public handleChangeLocation(event: any) {
-    this.props.history.push(`/location/${event.target.value}`);
+    this.props.history.push(`/${event.target.value}`);
   }
 
   public render() {
     return (
         <React.Fragment>
-          <div className={`outer-container vacancies-container ${ this.props.isDetails? "hide-content" : "" }`}>
+          <div className={`outer-container vacancies-container`}>
             <Container>
               <div className="vacancy-header">
                 <h1 id="listTable">Our Vacancies</h1>
@@ -81,7 +82,7 @@ class VacanciesData extends React.PureComponent<Props> {
   private renderVacanciesList() {
     return (
       <div className="vacancy-list">
-        {this.props.vacancies.map((vacancy: VacanciesStore.Vacancies) =>
+        {this.props.vacancies.map((vacancy: Vacancy) =>
         <Link key={vacancy.id} className="vacancy-link" to={`/vacancy/details/${vacancy.id}`}>
           <div className="vacancy-card">
             <div className="vacancy-card-content">
@@ -120,9 +121,9 @@ class VacanciesData extends React.PureComponent<Props> {
 
     return (
       <div className="vacancy-pagination">
-        <Link className={`btn btn-outline-primary ${ page === 1 ? "disable-link" : "" }`} to={`/location/${location}/${prevStartIndex}`}>Previous</Link>
+        <Link className={`btn btn-outline-primary ${ page === 1 ? "disable-link" : "" }`} to={`/${location}/${prevStartIndex}`}>Previous</Link>
         {this.props.isLoading && <span>Loading...</span>}
-        <Link className={`btn btn-outline-primary ${ page === maxpage ? "disable-link" : "" }`} to={`/location/${location}/${nextStartIndex}`}>Next</Link>
+        <Link className={`btn btn-outline-primary ${ page === maxpage ? "disable-link" : "" }`} to={`/${location}/${nextStartIndex}`}>Next</Link>
       </div>
     );
   }

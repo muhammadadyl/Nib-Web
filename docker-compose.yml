@@ -1,6 +1,6 @@
 version: "3"
 services:
-  api:
+  grpc-api:
     build:
       context: .
       dockerfile: Dockerfile.Grpc
@@ -11,7 +11,7 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
       FILESTORAGEOPTIONS__FILENAME: "jobs.json"
       LOCATIONAPIOPTIONS__HOSTADDRESS: "https://private-8dbaa-nibdevchallenge.apiary-mock.com/location"
-  frontend:
+  frontend-api:
     build:
       context: .
       dockerfile: Dockerfile.RestApi
@@ -20,5 +20,17 @@ services:
     environment:
       ASPNETCORE_URLS: http://+:5120
       ASPNETCORE_ENVIRONMENT: Development
-      CAREERGRPCAPIOPTIONS__BASEURL: "http://api:5110"
-    depends_on: ["api"]
+      CAREERGRPCAPIOPTIONS__BASEURL: "http://grpc-api:5110"
+    depends_on: ["grpc-api"]
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile.React
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+    depends_on: ["grpc-api", "frontend-api"]

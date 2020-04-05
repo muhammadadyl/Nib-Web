@@ -8,8 +8,7 @@ import './custom.css'
 
 export default () => (
     <Layout>
-        <Route path='/' component={Vacancies} />
-        <Route path='/location/:location?/:page?' component={Vacancies} />
+        <Route path='/:location?/:page?' component={Vacancies} />
         <Route path='/vacancy/details/:id' component={VacancyDetails} />
     </Layout>
 );
