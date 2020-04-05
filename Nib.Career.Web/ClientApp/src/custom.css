@@ -1,0 +1,250 @@
+/* Provide sufficient contrast against white background */
+h1, h2 {
+  color: #fff;
+  font-size: 4.0rem;
+}
+
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #E01A76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.disable-link {
+  pointer-events: none;
+}
+
+.hide-content {
+  display: none !important;
+}
+
+.outer-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.banner {
+  position: relative;
+  background-image: url(/content/careerspage_header.jpg);
+  background-position-x: center;
+  background-position-y: 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-content {
+  padding: 320px 20% 140px;
+  text-align: center;
+}
+
+.icon-container {
+  position: relative;
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+  padding: 50px 10px;
+}
+
+.icon-container > .icon {
+  position: relative;
+  display: block;
+  height: 120px;
+}
+
+.icon-container > .icon > img {
+  position: relative;
+  width: 100px;
+}
+
+.icon-container > p {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.vacancies-container {
+  background-color: #009623;
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.vacancy-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.vacancy-location-select {
+  width: 180px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  color: #000; 
+  background-color: #000;
+}
+
+.vacancy-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.vacancy-link, .vacancy-link:any-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.vacancy-card-content {
+  position: relative;
+  width: 80%;
+  padding-right: 20px;
+  text-align: justify;
+}
+
+.vacancy-card-date {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 180px;
+  height: 180px;
+  background-color: darkgreen;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.vacancy-card-date-day {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.vacancy-card-date-month {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.vacancy-card-content-row {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.vacancy-card-content-location {
+  text-transform: uppercase;
+}
+
+.vacancy-card-content-description {
+  position: relative;
+  text-align: justify;
+}
+
+.vacancy-pagination {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 100px;
+}
+
+.btn-outline-primary {
+  background: #fff;
+  width: 120px;
+  color: #009623;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border: 5px solid #fff;
+  border-radius: 5px;
+}
+
+.disable-link {
+  color: lightslategray;
+}
+
+@media screen and (min-width: 768px) {
+  .hide-content-lg {
+    display: none !important; 
+  }
+}
+  
+@media screen and (max-width: 767px) and (min-width: 480px) {
+  .icon-container {
+    width: 50%;
+  }
+
+  .vacancy-location-select {
+    width: auto;
+  }
+
+  #listTable {
+    font-size: 3.5rem;
+  }
+
+  .vacancy-card-content-title {
+    margin-right: 10px;
+    text-align: left;
+  }
+
+  .vacancy-card {
+    padding: 40px 0;
+  }
+
+  .vacancy-card-content {
+    width: 75%;
+    padding-right: 10px;
+  }
+  
+  .vacancy-card-date {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 40px;
+  }
+
+  .hide-content-md {
+    display: none !important;
+  }
+
+}
+
+@media screen and (max-width: 479px) {
+  .icon-container {
+    width: 100%;
+  }
+
+  .vacancy-card-content {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .vacancy-card-content-title {
+    text-align: left;
+  }
+
+  .hide-content-sm {
+    display: none !important;
+  }
+
+  .vacancy-header {
+    flex-direction: column;
+  }
+
+  .vacancy-location-select {
+    width: 100%;
+  }
+}

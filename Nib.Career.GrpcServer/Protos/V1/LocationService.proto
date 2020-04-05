@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "Nib.Career.GrpcServer.V1";
+
+package Nib.Career.GrpcServer.V1;
+
+message GetLocationResponse {
+	repeated LocationDto Location = 1;
+}
+
+message LocationDto {
+	int32 Id = 1;
+	string Name = 2;
+	string State = 3;
+}
+
+message LocationRequest {
+}
+
+service LocationService {
+	rpc GetLocation(LocationRequest) returns (GetLocationResponse); 
+}

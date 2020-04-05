@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Nib.Career.GrpcServer.V1";
+
+package Nib.Career.GrpcServer.V1;
+
+message GetJobDetailsRequest {
+	string JobId = 1;
+}
+
+message GetJobDetailsResponse {
+	string JobId = 1;
+	string Title = 2;
+	string Description = 3;
+	string Location = 4;
+	google.protobuf.Timestamp CreatedDate = 5;
+}
+
+message SearchJobRequest {
+	int32 Take = 1;
+	int32 Skip = 2;	
+	int32 LocationId = 3;
+}
+
+message SearchJobResponse {
+	repeated GetJobDetailsResponse Jobs = 1;
+	int32 Count = 2;
+}
+
+service JobDetailsService {
+	rpc SearchJobs(SearchJobRequest) returns (SearchJobResponse);
+	rpc GetJobDetails(GetJobDetailsRequest) returns (GetJobDetailsResponse);
+}
+

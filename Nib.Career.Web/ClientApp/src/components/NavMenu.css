@@ -1,0 +1,33 @@
+﻿a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    font-size: 2rem;
+    font-weight: 900;
+    color: white;
+    padding: 0;
+}
+
+html { font-size: 16px; }
+
+@media screen and (max-width: 767px) {
+    html { font-size: 14px; }
+
+    .navbar > .container {
+        display: block;
+        text-align: center;
+    }
+}
+  
+@media screen and (max-width: 479px) {
+    html { font-size: 14px; }
+
+    .navbar > .container {
+        display: block;
+        text-align: center;
+    }
+}
+
+header { 
+    background-color: #009623;
+}

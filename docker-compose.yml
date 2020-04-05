@@ -1,0 +1,24 @@
+version: "3"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.Grpc
+    ports:
+      - "5110:5110"
+    environment:
+      ASPNETCORE_URLS: http://+:5110
+      ASPNETCORE_ENVIRONMENT: Development
+      FILESTORAGEOPTIONS__FILENAME: "jobs.json"
+      LOCATIONAPIOPTIONS__HOSTADDRESS: "https://private-8dbaa-nibdevchallenge.apiary-mock.com/location"
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.RestApi
+    ports:
+      - "5120:5120"
+    environment:
+      ASPNETCORE_URLS: http://+:5120
+      ASPNETCORE_ENVIRONMENT: Development
+      CAREERGRPCAPIOPTIONS__BASEURL: "http://api:5110"
+    depends_on: ["api"]
